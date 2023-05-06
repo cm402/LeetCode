@@ -1,7 +1,24 @@
 import java.util.*;
 public class LongestCommonPrefix {
-    // first attempt
-    // time complexity: O(n m), where n is size of strs and m is length the shortest String in strs
+
+    // second attempt: Sorting list and comparing first/last element
+    // time complexity: O(n log(n) + m)
+    // space complexity: O(1)
+    public String longestCommonPrefix2(String[] strs) {
+        Arrays.sort(strs);
+        String first = strs[0];
+        String last = strs[strs.length - 1];
+        int charIndex = 0;
+        while(charIndex < first.length() && charIndex < last.length()){
+            if(first.charAt(charIndex) != last.charAt(charIndex))
+                break;
+            charIndex++;
+        }
+        return first.substring(0, charIndex);
+    }
+
+    // first attempt: Comparing each value against shortest String
+    // time complexity: O(n m)
     // space complexity: O(1)
     public String longestCommonPrefix(String[] strs) {
         // find shortest input String in list
@@ -9,7 +26,7 @@ public class LongestCommonPrefix {
         // for each character, iterate through each of the input strings checking that the characters are the same
         // if character is not the same, break loop
         // otherwise, increment character index
-        Arrays.sort(strs);
+        Arrays.sort(strs, Comparator.comparingInt(x -> x.length()));
         String shortestString = strs[0];
         int charIndex = 0;
         ShortestStringLoop: while(charIndex < shortestString.length()){
