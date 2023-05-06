@@ -1,5 +1,3 @@
-import java.util.*;
-
 class MergeSortedArray {
     // Iterative approach using pointers to keep track of indexes.
     // time complexity: O(n)
