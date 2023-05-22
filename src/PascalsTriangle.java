@@ -1,6 +1,11 @@
 import java.util.*;
 
 public class PascalsTriangle {
+    /*
+     * Iterative solution, making use of previous row to determine next rows values
+     * time complexity: O(n)
+     * space complexity: O(n)
+     */
     public List<List<Integer>> generate(int numRows) {
         // set first and last values in list to 1
         // set every other value to be the sum of the same index and
